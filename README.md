@@ -12,7 +12,7 @@ Certifique-se de ter o node, npm e git instalados no seu sistema.
 1. Clone o repositório:
 
    ```bash
-   git clone https://github.com/seu-usuario/seu-projeto.git
+   git clone [https://github.com/seu-usuario/seu-projeto.git](https://github.com/Dan0Silva/customers-app.git)
 
 2. Navegue até o diretório do projeto:
 
