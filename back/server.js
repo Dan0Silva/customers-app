@@ -1,25 +1,24 @@
-const express = require("express");
+import express, { json } from "express";
+
+import db from "./src/config/dbConfig.js";
+import User from "./src/model/userModel.js";
+
+import UserController from "./src/controllers/userController.js";
+
+try {
+  await db.sync({ force: true });
+  console.warn("All models were synchronized successfully.");
+} catch (error) {
+  console.error(error);
+}
 
 const app = express();
 
-const listUsers = [];
+app.use(json());
 
-app.use(express.json());
+app.get("/users", UserController.getAllEntities);
 
-app.get("/", (req, res) => {
-  res.send("Api Criada com sucesso");
-});
-
-app.get("/users", (req, res) => {
-  res.json(listUsers);
-});
-
-app.post("/users", (req, res) => {
-  const newUser = req.body;
-
-  listUsers.push(newUser);
-  res.json({ message: "Sucess to create user!" });
-});
+app.post("/users", UserController.createUser);
 
 app.listen(3000, () => {
   console.log("Success api listen on port 3000!");

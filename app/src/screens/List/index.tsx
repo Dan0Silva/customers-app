@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import { UserContext } from "../../contexts/users";
 import { useNavigation } from "@react-navigation/native";
@@ -23,7 +23,10 @@ export default function App() {
   const navigation = useNavigation<StackTypes>();
   const logoSource = require("../../../assets/icon.png");
 
-  const { userList } = useContext(UserContext);
+  const { getUsers } = useContext(UserContext);
+  const users = getUsers();
+
+  console.warn(users);
 
   const RenderItem = (user: UserType) => {
     const statusColor = user.status == "Ativo" ? "#3ebb51" : "#bb3e3e";
@@ -57,7 +60,7 @@ export default function App() {
 
       <Style.ContainerList>
         <Style.List
-          data={userList as UserType[]}
+          data={users as UserType[]}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => RenderItem(item)}
         />

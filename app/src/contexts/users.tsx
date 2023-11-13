@@ -1,52 +1,32 @@
-import { PropsWithChildren, createContext, useState } from "react";
+import { PropsWithChildren, createContext } from "react";
+import { getAllUsers, createUser } from "../service/user";
 
 interface UserContext {
-  userList: Array<UserType>;
+  getUsers: Function;
   addUser: Function;
 }
 
 export const UserContext = createContext<UserContext>({
-  userList: [],
+  getUsers: () => {},
   addUser: () => {},
 });
 
 const UserProvider = ({ children }: PropsWithChildren) => {
-  const [userList, setUserList] = useState<UserType[]>([
-    {
-      id: "1313",
-      name: "Danilo A. Silva",
-      email: "danilo@mail.com",
-      password: "test",
-      confirmPassword: "test",
-      status: "Ativo",
-    },
-    {
-      id: "1212",
-      name: "Roberto Silva",
-      email: "robs@mail.com",
-      password: "test",
-      confirmPassword: "test",
-      status: "Inativo",
-    },
-    {
-      id: "1010",
-      name: "Amanda Taves",
-      email: "a.taves@mail.com",
-      password: "test",
-      confirmPassword: "test",
-      status: "Ativo",
-    },
-  ]);
+  const users = getAllUsers();
+
+  function getUsers() {
+    return users;
+  }
 
   function addUser(user: UserType) {
     const id = Math.floor(Math.random() * 1000000) + 1;
 
     const newUser = { ...user, status: "Ativo", id: id.toString() };
-    setUserList([...userList, newUser]);
+    createUser(newUser);
   }
 
   return (
-    <UserContext.Provider value={{ userList, addUser }}>
+    <UserContext.Provider value={{ getUsers, addUser }}>
       {children}
     </UserContext.Provider>
   );
