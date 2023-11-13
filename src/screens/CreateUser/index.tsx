@@ -7,6 +7,8 @@ import { StackTypes } from "../../routes/Login.routes";
 
 import { UserContext } from "../../contexts/users";
 
+import { validate } from "email-validator";
+
 import * as Style from "./styles";
 
 const defaultUser: UserType = {
@@ -32,14 +34,25 @@ export default () => {
         text1: "Campos não estão preenchidos corretamente!",
       });
     } else {
-      if (user.password != user.confirmPassword) {
+      if (!validate(user.email)) {
         Toast.show({
           type: "error",
-          text1: "Senhas não coincidem!",
+          text1: "Email Invalido!",
         });
       } else {
-        addUser(user);
-        navigation.navigate("success");
+        if (user.password != user.confirmPassword) {
+          Toast.show({
+            type: "error",
+            text1: "Senhas não coincidem!",
+          });
+        } else {
+          if (user.password.length <= 8) {
+            Toast.show({ type: "error", text1: "Senha fraca!" });
+          } else {
+            addUser(user);
+            navigation.navigate("success");
+          }
+        }
       }
     }
   };
@@ -68,6 +81,7 @@ export default () => {
             <Style.Field
               placeholder="e-mail"
               placeholderTextColor={"#fcfdff"}
+              keyboardType="email-address"
               onChangeText={(text) => setUser({ ...user, email: text })}
             />
           </Style.ContainerField>
