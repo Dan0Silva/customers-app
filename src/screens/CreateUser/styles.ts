@@ -62,8 +62,8 @@ export const ContainerField = styled.View`
   padding: 12px;
   margin-top: 10px;
   margin-bottom: 20px;
-
   background-color: #a6aec1;
+  elevation: 2;
 `;
 
 export const Field = styled.TextInput`
@@ -85,8 +85,8 @@ export const Button = styled.TouchableOpacity`
   border-radius: 6px;
   align-items: center;
   justify-content: center;
-
   background-color: #a6aec1;
+  elevation: 2;
 `;
 
 export const TextButton = styled.Text`

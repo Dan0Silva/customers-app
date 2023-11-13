@@ -41,6 +41,7 @@ export const Options = styled.View`
   justify-content: center;
   border-radius: 12px;
   background-color: #a6aec1;
+  elevation: 5;
 `;
 
 export const Button = styled.TouchableOpacity`
@@ -51,6 +52,7 @@ export const Button = styled.TouchableOpacity`
   justify-content: center;
   border-radius: 6px;
   background-color: #ededf2;
+  elevation: 2;
 `;
 
 export const Divider = styled.View`

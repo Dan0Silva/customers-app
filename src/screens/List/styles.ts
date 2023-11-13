@@ -56,7 +56,7 @@ export const ContainerItem = styled.View`
   margin-bottom: 20px;
   border-radius: 12px;
   background-color: #cfd5e1;
-  overflow: hidden;
+  elevation: 2;
 `;
 
 export const ContainerText = styled.View`
