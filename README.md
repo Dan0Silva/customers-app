@@ -49,5 +49,6 @@ padrão dentro da aplicação. Por exeplo, ao invés de criar um botão em cada 
 poderia criar um componente Button que poderia ser utilizado em qualquer tela, polpando código e facilitando futuras manutenções.
 
 Creio que, caso fosse melhorar o projeto, tentaria criar uma parte de login, onde a pessoa só conseguiria ver outros usuários caso estivesse logada, além de trabalhar
-mais no design da aplicação e adicionar alguns incrementos ao usuário, como foto de perfil ou um feed de publicações caso tomasse o projeto para esse rumo.
+mais no design da aplicação e adicionar alguns incrementos ao usuário, como foto de perfil ou um feed de publicações caso tomasse o projeto para esse rumo. Outro ponto
+bem inportante na melhoria do projeto seria a utilização de uma api para persistência de dados.
    
